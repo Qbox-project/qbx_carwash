@@ -17,7 +17,8 @@ server_script 'server/main.lua'
 client_script 'client/main.lua'
 
 files {
-    'config/*.lua',
+    'config/client.lua',
+    'config/shared.lua',
 }
 
 lua54 'yes'
