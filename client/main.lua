@@ -1,4 +1,6 @@
 -- Variables
+local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 local washingVehicle = false
 
 -- Events
@@ -20,7 +22,7 @@ RegisterNetEvent('qbx_carwash:client:washCar', function()
         SetVehicleUndriveable(cache.vehicle, false)
         WashDecalsFromVehicle(cache.vehicle, 1.0)
         washingVehicle = false
-    else -- if cancel
+    else -- if canceled
         exports.qbx_core:Notify(Lang:t('canceled'), 'error')
         washingVehicle = false
     end
@@ -34,21 +36,21 @@ CreateThread(function()
         local dirtLevel = GetVehicleDirtLevel(cache.vehicle)
         local sleep = 1000
         if IsPedInAnyVehicle(cache.ped, false) then
-            for i = 1, #Config.Locations do
-                local dist = #(playerCoords - Config.Locations[i])
+            for i = 1, #config.locations do
+                local dist = #(playerCoords - config.locations[i])
                 if dist <= 7.5 and driver then
                     sleep = 0
                     if not washingVehicle then
-                        DrawText3D('~g~E~w~ - Wash the car ($'..Config.DefaultPrice..')', Config.Locations[i])
+                        DrawText3D(string.format('~g~E~w~ - Wash the car ($%s)', sharedConfig.price), config.locations[i])
                         if IsControlJustPressed(0, 38) then
-                            if dirtLevel > Config.DirtLevel then
+                            if dirtLevel > config.dirtLevel then
                                 TriggerServerEvent('qbx_carwash:server:startWash')
                             else
                                 exports.qbx_core:Notify(Lang:t('not_dirty'), 'error')
                             end
                         end
                     else
-                        DrawText3D(Lang:t('not_available'), Config.Locations[i])
+                        DrawText3D(Lang:t('not_available'), config.locations[i])
                     end
                 end
             end
@@ -58,8 +60,8 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-    for i = 1, #Config.Locations do
-        local carWash = AddBlipForCoord(Config.Locations[i].x, Config.Locations[i].y, Config.Locations[i].z)
+    for i = 1, #config.locations do
+        local carWash = AddBlipForCoord(config.locations[i].x, config.locations[i].y, config.locations[i].z)
         SetBlipSprite(carWash, 100)
         SetBlipDisplay(carWash, 4)
         SetBlipScale(carWash, 0.75)
