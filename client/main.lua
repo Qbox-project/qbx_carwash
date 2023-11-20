@@ -43,7 +43,7 @@ for i=1, #config.locations do
         radius = 7.5,
         -- debug = true,
         inside = function()
-            if lib.progressActive() then
+            if not lib.progressActive() then
                 DrawText3D(string.format('~g~E~w~ - Wash the car ($%s)', price), coords)
                 if IsControlJustPressed(0, 38) then
                     if GetVehicleDirtLevel(cache.vehicle) > config.dirtLevel then
