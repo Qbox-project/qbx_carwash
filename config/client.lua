@@ -1,5 +1,5 @@
 return {
-    useTarget = true,
+    useTarget = false,
     polyDebug = false,
     
     dirtLevel = 0.1, -- Threshold for the dirt level to be counted as dirty
