@@ -1,4 +1,6 @@
 local Translations = {
+    ["wash_prompt"] = 'Wash the car for $%{value}',
+    ["wash_prompt_dt"] = '~g~E~w~ - Wash the car for $%{value}',
     ["washing"] = "Vehicle is being washed...",
     ["canceled"] = "Canceled...",
     ["not_dirty"] = "The vehicle isn't dirty",

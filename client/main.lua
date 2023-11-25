@@ -1,8 +1,6 @@
--- Variables
 local config = require 'config.client'
 local price = require 'config.shared'.price
 
--- Events
 RegisterNetEvent('qbx_carwash:client:washCar', function()
     if source == '' then return end
     if lib.progressBar({
@@ -35,27 +33,42 @@ local function createCarWashBlip(coords)
     EndTextCommandSetBlipName(carWash)
 end
 
-for i=1, #config.locations do
+for i = 1, #config.locations do
     local coords = config.locations[i]
     createCarWashBlip(coords)
-    lib.zones.sphere({
-        coords = coords,
-        radius = 7.5,
-        -- debug = true,
-        inside = function()
-            if not lib.progressActive() then
-                DrawText3D(string.format('~g~E~w~ - Wash the car ($%s)', price), coords)
-                if IsControlJustPressed(0, 38) then
-                    if GetVehicleDirtLevel(cache.vehicle) > config.dirtLevel then
-                        local netId = NetworkGetNetworkIdFromEntity(cache.vehicle)
-                        TriggerServerEvent('qbx_carwash:server:startWash', netId)
-                    else
-                        exports.qbx_core:Notify(Lang:t('not_dirty'), 'error')
+    if config.useTarget then
+        exports.ox_target:addSphereZone({
+            coords = coords,
+            radius = 7.5,
+            debug = config.polyDebug,
+            options = {
+                {
+                    label = Lang:t('wash_prompt', {value = price}),
+                    icon = 'fas fa-car-on',
+                    serverEvent = 'qbx_carwash:server:startWash',
+                },
+            },
+        })
+    else
+        lib.zones.sphere({
+            coords = coords,
+            radius = 7.5,
+            debug = config.polyDebug,
+            inside = function()
+                if not lib.progressActive() then
+                    DrawText3D(string.format(Lang:t('wash_prompt', {value = price}), coords))
+                    if IsControlJustPressed(0, 38) then
+                        if GetVehicleDirtLevel(cache.vehicle) > config.dirtLevel then
+                            local netId = NetworkGetNetworkIdFromEntity(cache.vehicle)
+                            TriggerServerEvent('qbx_carwash:server:startWash', netId)
+                        else
+                            exports.qbx_core:Notify(Lang:t('not_dirty'), 'error')
+                        end
                     end
+                else
+                    DrawText3D(Lang:t('not_available'), coords)
                 end
-            else
-                DrawText3D(Lang:t('not_available'), coords)
-            end
-        end,
-    })
+            end,
+        })
+    end
 end
