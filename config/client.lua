@@ -1,4 +1,7 @@
 return {
+    useTarget = false,
+    polyDebug = false,
+    
     dirtLevel = 0.1, -- Threshold for the dirt level to be counted as dirty
     locations = {
         vec3(25.29, -1391.96, 29.33),

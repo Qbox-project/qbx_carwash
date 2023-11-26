@@ -1,6 +1,5 @@
 local price = require 'config.shared'.price
 
--- Events
 RegisterNetEvent('qbx_carwash:server:startWash', function(netId)
     local player = exports.qbx_core:GetPlayer(source)
 
