@@ -56,7 +56,7 @@ for i = 1, #config.locations do
             debug = config.polyDebug,
             inside = function()
                 if not lib.progressActive() then
-                    DrawText3D(string.format(Lang:t('wash_prompt', {value = price}), coords))
+                    DrawText3D(Lang:t('wash_prompt', {value = price}), coords)
                     if IsControlJustPressed(0, 38) then
                         if GetVehicleDirtLevel(cache.vehicle) > config.dirtLevel then
                             local netId = NetworkGetNetworkIdFromEntity(cache.vehicle)
