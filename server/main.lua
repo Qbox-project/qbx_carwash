@@ -5,12 +5,12 @@ RegisterNetEvent('qbx_carwash:server:startWash', function(netId)
 
     if not player then return end
 
-    if player.Functions.RemoveMoney('cash', price, Lang:t('reason')) or player.Functions.RemoveMoney('bank', price, Lang:t('reason')) then
+    if player.Functions.RemoveMoney('cash', price, locale('reason')) or player.Functions.RemoveMoney('bank', price, locale('reason')) then
         SetTimeout(6000, function()
             SetVehicleDirtLevel(NetworkGetEntityFromNetworkId(netId), 0.0)
         end)
         TriggerClientEvent('qbx_carwash:client:washCar', player.PlayerData.source)
     else
-        exports.qbx_core:Notify(player.PlayerData.source, Lang:t('no_money'), 'error')
+        exports.qbx_core:Notify(player.PlayerData.source, locale('no_money'), 'error')
     end
 end)

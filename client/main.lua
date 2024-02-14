@@ -5,7 +5,7 @@ RegisterNetEvent('qbx_carwash:client:washCar', function()
     if source == '' then return end
     if lib.progressBar({
         duration = 6000,
-        label = Lang:t('washing'),
+        label = locale('washing'),
         useWhileDead = false,
         canCancel = false,
         disable = {
@@ -17,7 +17,7 @@ RegisterNetEvent('qbx_carwash:client:washCar', function()
     }) then -- if completed
         WashDecalsFromVehicle(cache.vehicle, 1.0)
     else -- if canceled
-        exports.qbx_core:Notify(Lang:t('canceled'), 'error')
+        exports.qbx_core:Notify(locale('canceled'), 'error')
     end
 end)
 
@@ -29,7 +29,7 @@ local function createCarWashBlip(coords)
     SetBlipAsShortRange(carWash, true)
     SetBlipColour(carWash, 37)
     BeginTextCommandSetBlipName('STRING')
-    AddTextComponentSubstringPlayerName(Lang:t('label'))
+    AddTextComponentSubstringPlayerName(locale('label'))
     EndTextCommandSetBlipName(carWash)
 end
 
@@ -43,7 +43,7 @@ for i = 1, #config.locations do
             debug = config.polyDebug,
             options = {
                 {
-                    label = Lang:t('wash_prompt', {value = price}),
+                    label = locale('wash_prompt', price),
                     icon = 'fas fa-car-on',
                     serverEvent = 'qbx_carwash:server:startWash',
                 },
@@ -56,17 +56,17 @@ for i = 1, #config.locations do
             debug = config.polyDebug,
             inside = function()
                 if not lib.progressActive() then
-                    DrawText3D(Lang:t('wash_prompt', {value = price}), coords)
+                    DrawText3D(locale('wash_prompt', price), coords)
                     if IsControlJustPressed(0, 38) then
                         if GetVehicleDirtLevel(cache.vehicle) > config.dirtLevel then
                             local netId = NetworkGetNetworkIdFromEntity(cache.vehicle)
                             TriggerServerEvent('qbx_carwash:server:startWash', netId)
                         else
-                            exports.qbx_core:Notify(Lang:t('not_dirty'), 'error')
+                            exports.qbx_core:Notify(locale('not_dirty'), 'error')
                         end
                     end
                 else
-                    DrawText3D(Lang:t('not_available'), coords)
+                    DrawText3D(locale('not_available'), coords)
                 end
             end,
         })
