@@ -1,0 +1,9 @@
+{
+    "washing": "Vozidlo se myje...",
+    "canceled": "Zrušeno...",
+    "not_dirty": "Vozidlo není špinavé",
+    "not_available": "Myčka aut není k dispozici...",
+    "no_money": "Nemáte dost peněz...",
+    "reason": "Auto vyčištěno",
+    "label": "Myčka aut"
+}
