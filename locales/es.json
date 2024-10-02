@@ -1,0 +1,11 @@
+{
+    "wash_prompt": "Lava el coche por $%s",
+    "wash_prompt_dt": "~g~E~w~ - Lava el coche por $%s",
+    "washing": "El vehículo está siendo lavado...",
+    "canceled": "Cancelado...",
+    "not_dirty": "El vehículo no está sucio",
+    "not_available": "El lavadero de autos no está disponible...",
+    "no_money": "No tienes suficiente dinero...",
+    "reason": "Coche lavado",
+    "label": "Lavadero de autos"
+}
