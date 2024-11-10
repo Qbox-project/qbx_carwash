@@ -1,0 +1,11 @@
+{
+    "wash_prompt": "Spala masina pentru $%s",
+    "wash_prompt_dt": "~g~E~w~ - Spala masina pentru $%s",
+    "washing": "Vehiculul este în curs de spălare...",
+    "canceled": "Anulat...",
+    "not_dirty": "Vehiculul nu este murdar",
+    "not_available": "Spalatoria auto nu este a...",
+    "no_money": "Nu ai suficienți bani...",
+    "reason": "Mașina spălată",
+    "label": "Spalatorie Auto"
+}
