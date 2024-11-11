@@ -56,7 +56,7 @@ for i = 1, #config.locations do
             debug = config.polyDebug,
             inside = function()
                 if not lib.progressActive() then
-                    qbx.drawText3d({text = locale('wash_prompt', price), coords = coords})
+                    qbx.drawText3d({text = locale('wash_prompt_dt', price), coords = coords})
                     if IsControlJustPressed(0, 38) then
                         if GetVehicleDirtLevel(cache.vehicle) > config.dirtLevel then
                             local netId = NetworkGetNetworkIdFromEntity(cache.vehicle)
