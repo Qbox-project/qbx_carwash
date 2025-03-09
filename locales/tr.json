@@ -1,0 +1,11 @@
+{
+  "wash_prompt": "Aracı $%s karşılığında yıka",
+  "wash_prompt_dt": "~g~E~w~ - Aracı $%s karşılığında yıka",
+  "washing": "Araç yıkanıyor...",
+  "canceled": "İptal edildi...",
+  "not_dirty": "Araç kirli değil",
+  "not_available": "Araç yıkama hizmeti mevcut değil...",
+  "no_money": "Yeterli paran yok...",
+  "reason": "Araç Yıkandı",
+  "label": "Araç Yıkama"
+}
