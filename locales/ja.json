@@ -1,0 +1,11 @@
+{
+    "wash_prompt": "車を洗車する（$%s）",
+    "wash_prompt_dt": "~g~E~w~ - 車を洗車する（$%s）",
+    "washing": "車両を洗車中...",
+    "canceled": "キャンセルしました...",
+    "not_dirty": "車両は汚れていません",
+    "not_available": "洗車場は現在利用できません...",
+    "no_money": "お金が足りません...",
+    "reason": "洗車済み",
+    "label": "洗車場"
+}
