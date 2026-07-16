@@ -45,7 +45,10 @@ for i = 1, #config.locations do
                 {
                     label = locale('wash_prompt', price),
                     icon = 'fas fa-car-on',
-                    serverEvent = 'qbx_carwash:server:startWash',
+                    onSelect = function()
+                        if not cache.vehicle then return end
+                        TriggerServerEvent('qbx_carwash:server:startWash', NetworkGetNetworkIdFromEntity(cache.vehicle))
+                    end,
                 },
             },
         })
